@@ -3,20 +3,19 @@ extends KinematicBody2D
 
 var velocity = Vector2()
 var chainVelocity := Vector2(0,0)
-var walkSpeed = 30
-var runSpeed = 45
+var walkSpeed = 45
+var runSpeed = 90
 var playerSpeed = 0
 var onGround = false
 var hookPosition
 var currentRopeLength
 
 
+
 const GRAVITY = 10
 const JUMP_POWER = -250
 const FLOOR = Vector2(0,-1)
 const CHAIN_PULL = 50
-
-
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -31,6 +30,15 @@ func _input(event: InputEvent) -> void:
 
 
 func _physics_process(delta):
+	var mechScene = load("res://Mech.tscn")
+	
+	if Input.is_action_just_pressed("toggle"):
+		$CollisionShape2D.disabled = true
+		self.hide()
+		var new_player = mechScene.instance()
+		new_player.global_position = self.global_position
+		get_parent().add_child(new_player)
+		queue_free()
 	
 	#Run or walk
 	if Input.is_action_pressed("Run"):
