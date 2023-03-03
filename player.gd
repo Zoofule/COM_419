@@ -9,24 +9,28 @@ var playerSpeed = 0
 var onGround = false
 var hookPosition
 var currentRopeLength
-
-
+var globalVars = null
 
 const GRAVITY = 10
 const JUMP_POWER = -250
 const FLOOR = Vector2(0,-1)
 const CHAIN_PULL = 50
 
+func _ready():
+	globalVars = get_node("/root/Global")
+	print(globalVars.playerHealth)
+
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
-		if event.pressed:
-			# We clicked the mouse -> shoot()
-			hookPosition = event.position - get_viewport_rect().size * 0.5
-			currentRopeLength = global_position.distance_to(hookPosition)
-			$Grapple.shoot(hookPosition)
-		else:
-			# We released the mouse -> release()
-			$Grapple.release()
+		if globalVars.hasGrapple == true:
+			if event.pressed:
+				# We clicked the mouse -> shoot()
+				hookPosition = event.position - get_viewport_rect().size * 0.5
+				currentRopeLength = global_position.distance_to(hookPosition)
+				$Grapple.shoot(hookPosition)
+			else:
+				# We released the mouse -> release()
+				$Grapple.release()
 
 
 func _physics_process(delta):
@@ -57,6 +61,12 @@ func _physics_process(delta):
 		if onGround:
 			velocity.y = JUMP_POWER
 			onGround = false
+	#attack
+	if Input.is_action_pressed("attack"):
+		if onGround:
+			$MeleeTargetArea/CollisionShape2D.disabled = false
+	else:
+		$MeleeTargetArea/CollisionShape2D.disabled = true
 	#gravity
 	velocity.y += GRAVITY
 	if is_on_floor():
@@ -70,6 +80,4 @@ func _physics_process(delta):
 		# Not hooked -> no chain velocity
 		velocity = move_and_slide(velocity, FLOOR)
 		
-	
-	
-	
+
