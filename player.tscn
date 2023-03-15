@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://textures/characters.png" type="Texture" id=1]
 [ext_resource path="res://player.gd" type="Script" id=2]
@@ -60,13 +60,16 @@ points = PoolVector2Array( 21.3464, 32, 10.4957, 32, 10.4957, 9.99242, 21.3464, 
 } ]
 0/z_index = 0
 
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 2, 10 )
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 7.5, 11 )
+
 [node name="player" type="KinematicBody2D"]
 position = Vector2( 51, 0 )
 collision_layer = 2
 script = ExtResource( 2 )
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -88,3 +91,22 @@ tile_set = SubResource( 5 )
 cell_size = Vector2( 32, 32 )
 collision_use_kinematic = true
 format = 1
+
+[node name="MeleeTargetArea" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MeleeTargetArea"]
+position = Vector2( 10, 6 )
+shape = SubResource( 6 )
+
+[node name="Hitbox" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
+position = Vector2( 0.5, 5 )
+shape = SubResource( 7 )
+
+[connection signal="body_entered" from="MeleeTargetArea" to="." method="_on_MeleeTargetArea_body_entered"]
+[connection signal="body_exited" from="MeleeTargetArea" to="." method="_on_MeleeTargetArea_body_exited"]
