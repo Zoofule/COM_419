@@ -9,20 +9,17 @@ var playerSpeed = 0
 var onGround = false
 var hookPosition
 var currentRopeLength
-var globalVars = null
+
 
 const GRAVITY = 10
 const JUMP_POWER = -250
 const FLOOR = Vector2(0,-1)
 const CHAIN_PULL = 50
-
-func _ready():
-	globalVars = get_node("/root/Global")
-	print(globalVars.playerHealth)
+	
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
-		if globalVars.hasGrapple == true:
+		if Global.hasGrapple == true:
 			if event.pressed:
 				# We clicked the mouse -> shoot()
 				hookPosition = event.position - get_viewport_rect().size * 0.5

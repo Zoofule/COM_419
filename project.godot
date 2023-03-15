@@ -11,7 +11,9 @@ config_version=4
 [application]
 
 config/name="2d platformer"
-run/main_scene="res://StageOne.tscn"
+
+run/main_scene="res://Levels/MainScene.tscn"
+
 config/icon="res://icon.png"
 
 [autoload]
