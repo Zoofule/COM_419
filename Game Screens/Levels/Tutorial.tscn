@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Asset/visual assets/tileset/autotile32x.tres" type="TileSet" id=1]
+[ext_resource path="res://player.tscn" type="PackedScene" id=2]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = ExtResource( 1 )
+cell_size = Vector2( 32, 32 )
+format = 1
+tile_data = PoolIntArray( 9, 0, 4, 65545, 0, 65540, 131081, 0, 65540, 196617, 0, 65540, 262150, 0, 4, 262153, 0, 65540, 327680, 0, 262144, 327681, 0, 262145, 327682, 0, 262145, 327683, 0, 262145, 327684, 0, 262145, 327685, 0, 262145, 327686, 0, 262157, 327687, 0, 262145, 327688, 0, 262145, 327689, 0, 262160 )
+
+[node name="player" parent="." instance=ExtResource( 2 )]
+position = Vector2( 93, 121 )
