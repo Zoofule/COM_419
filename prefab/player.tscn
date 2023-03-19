@@ -1,0 +1,118 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://textures/Mech and pilot v3.png" type="Texture" id=1]
+[ext_resource path="res://scripts/DamageArea.gd" type="Script" id=2]
+[ext_resource path="res://scripts/Camera2D.gd" type="Script" id=3]
+[ext_resource path="res://scripts/player.gd" type="Script" id=4]
+[ext_resource path="res://prefab/Grapple.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scripts/PlayerSM.gd" type="Script" id=6]
+[ext_resource path="res://scripts/Hitbox.gd" type="Script" id=7]
+
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 17, 28.5 )
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 9, 18.5 )
+
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 19, 28 )
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 25, 21.5 )
+
+[node name="player" type="KinematicBody2D"]
+position = Vector2( 51, 0 )
+collision_layer = 2
+collision_mask = 9
+script = ExtResource( 4 )
+
+[node name="PlayerHitbox" type="Area2D" parent="."]
+position = Vector2( 1, 0 )
+collision_layer = 16
+collision_mask = 0
+script = ExtResource( 7 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerHitbox"]
+position = Vector2( -1.5, 2 )
+shape = SubResource( 7 )
+
+[node name="MechHitbox" type="Area2D" parent="."]
+visible = false
+position = Vector2( 1, -8 )
+collision_layer = 16
+collision_mask = 0
+script = ExtResource( 7 )
+entity_path = NodePath("../Mech")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MechHitbox"]
+position = Vector2( 0, 0.5 )
+shape = SubResource( 7 )
+disabled = true
+
+[node name="HumanCollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -1, 2.5 )
+shape = SubResource( 1 )
+
+[node name="MechCollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2( 1, -7 )
+shape = SubResource( 8 )
+disabled = true
+
+[node name="Human" type="Node2D" parent="."]
+position = Vector2( 1, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Human"]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( 40, 26, 29, 42 )
+
+[node name="Grapple" parent="Human" instance=ExtResource( 5 )]
+scale = Vector2( 0.25, 0.25 )
+
+[node name="PlayerMeleeTargetArea" type="Area2D" parent="Human"]
+collision_layer = 0
+collision_mask = 32
+script = ExtResource( 2 )
+playerDamage = 5.0
+mechDamage = 5.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Human/PlayerMeleeTargetArea"]
+position = Vector2( 0, -1.5 )
+shape = SubResource( 6 )
+disabled = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+script = ExtResource( 3 )
+
+[node name="SM" type="Node2D" parent="."]
+position = Vector2( 0, 67 )
+script = ExtResource( 6 )
+
+[node name="Mech" type="Node2D" parent="."]
+visible = false
+position = Vector2( 1, -8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Sprite" type="Sprite" parent="Mech"]
+texture = ExtResource( 1 )
+region_enabled = true
+region_rect = Rect2( -1, 5, 40, 58 )
+
+[node name="RangedAttackPos" type="Position2D" parent="Mech"]
+position = Vector2( 20, -5 )
+
+[node name="mechRechargeTimer" type="Timer" parent="."]
+wait_time = 2.0
+
+[connection signal="startRechargeTimer" from="." to="mechRechargeTimer" method="start"]
+[connection signal="stopRechargeTimer" from="." to="mechRechargeTimer" method="stop"]
+[connection signal="area_entered" from="Human/PlayerMeleeTargetArea" to="Human/PlayerMeleeTargetArea" method="_on_DamageArea_area_entered"]
+[connection signal="timeout" from="mechRechargeTimer" to="." method="_on_mechRechargeTimer_timeout"]
