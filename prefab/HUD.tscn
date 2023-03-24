@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://prefab/HealthBar.tscn" type="PackedScene" id=1]
+[ext_resource path="res://prefab/ChargeBar.tscn" type="PackedScene" id=2]
+[ext_resource path="res://prefab/CircleProgressBar.tscn" type="PackedScene" id=3]
+[ext_resource path="res://prefab/CircleProgressBar.gd" type="Script" id=4]
+
+[node name="HUD" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthBar" parent="CanvasLayer" instance=ExtResource( 1 )]
+anchor_left = 0.02
+anchor_top = 0.04
+anchor_right = 0.02
+anchor_bottom = 0.04
+margin_right = 500.0
+margin_bottom = 50.0
+rect_scale = Vector2( 0.2, 0.2 )
+
+[node name="HealthBar2" parent="CanvasLayer" instance=ExtResource( 2 )]
+anchor_left = 0.02
+anchor_top = 0.12
+rect_scale = Vector2( 0.2, 0.2 )
+
+[node name="GrappleCooldownPB" parent="CanvasLayer" instance=ExtResource( 3 )]
+margin_left = 281.0
+margin_top = 143.0
+margin_right = 345.0
+margin_bottom = 207.0
+rect_scale = Vector2( 0.5, 0.5 )
+
+[node name="MechHoverTimer" parent="CanvasLayer" instance=ExtResource( 3 )]
+margin_left = 249.0
+margin_top = 143.0
+margin_right = 313.0
+margin_bottom = 207.0
+rect_scale = Vector2( 0.5, 0.5 )
+value = 50.0
+tint_under = Color( 0.313726, 0, 0.192157, 1 )
+tint_progress = Color( 0.552941, 0, 0, 1 )
+script = ExtResource( 4 )
