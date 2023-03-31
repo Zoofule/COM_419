@@ -29,6 +29,7 @@ var flying = false #grappling hook flying
 var hooked = false #grappling hook hooked
 var isHovering = false #mech hovering
 var canHover = true
+var holdingObject = null
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

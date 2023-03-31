@@ -1,10 +1,12 @@
 extends KinematicBody2D
 
+
 onready var hitbox = $PlayerHitbox
 onready var grapple = $Human/Grapple
 onready var viewportSize = null
 signal stopRechargeTimer()
 signal startRechargeTimer()
+signal groundedUpdate(isGrounded)
 
 var velocity = Vector2()
 var chainVelocity := Vector2(0,0)
@@ -23,8 +25,9 @@ var facingDirection = 1
 
 const JUMP_POWER = [-250,-350] #human, mech
 const FLOOR = Vector2(0,-1)
-const CHAIN_PULL = 75
+const CHAIN_PULL = 100
 const MECH = preload("res://prefab/Mech.tscn")
+const isPlayer = true
 
 func _ready():
 	viewportSize = get_viewport_rect().size
@@ -65,6 +68,9 @@ func _apply_movement():
 	
 	wasGrounded = isGrounded
 	isGrounded = is_on_floor()
+	
+	if (wasGrounded == null || isGrounded != wasGrounded):
+		emit_signal("groundedUpdate", isGrounded)
 	
 	if wasGrounded == null || wasGrounded != isGrounded:
 		Global.emit_signal("groundedUpdate", isGrounded)
@@ -111,7 +117,7 @@ func _toggle_mech():
 		$HumanCollisionShape2D.disabled = false
 		$PlayerHitbox/CollisionShape2D.disabled = false
 		$MechCollisionShape2D.disabled = true
-		$MechHitbox/CollisionShape2D.disabled = false
+		$MechHitbox/CollisionShape2D.disabled = true
 		$Mech.hide()
 		$Human.show()
 

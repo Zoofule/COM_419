@@ -1,14 +1,16 @@
 extends Node2D
 
-onready var links = $Links		# A slightly easier reference to the links
-var direction := Vector2(0,0)	# The direction in which the chain was shot
-var tip := Vector2(0,0)			# The global position the tip should be in
-								# We use an extra var for this, because the chain is 
-								# connected to the player and thus all .position
-								# properties would get messed with when the player
-								# moves.
+signal holdingObject()
 
-const SPEED = 50	# The speed with which the chain moves
+onready var links = $Links	
+var direction := Vector2(0,0)	
+var tip := Vector2(0,0)			
+var collision = null
+var parent = get_parent()
+var moveBlock = false
+
+
+const SPEED = 150	# The speed with which the chain moves
 
 
 # shoot() shoots the chain in a given direction
@@ -19,6 +21,9 @@ func shoot(dir: Vector2) -> void:
 
 # release() the chain
 func release() -> void:
+	moveBlock = false
+	Global.holdingObject = null
+	moveBlock = false
 	Global.flying = false	# Not flying anymore	
 	Global.hooked = false	# Not attached anymore
 
@@ -36,10 +41,28 @@ func _process(_delta: float) -> void:
 
 # Every physics frame we update the tip position
 func _physics_process(_delta: float) -> void:
+	if Global.holdingObject:
+		release()
 	$Tip.global_position = tip	# The player might have moved and thus updated the position of the tip -> reset it
-	if Global.flying:
-		# `if move_and_collide()` always moves, but returns true if we did collide
-		if $Tip.move_and_collide(direction * SPEED):
-			Global.hooked = true	# Got something!
-			Global.flying = false	# Not flying anymore
+	if Global.flying:	
+		$Tip.move_and_slide(direction * SPEED) 
+		for i in $Tip.get_slide_count():
+			collision = $Tip.get_slide_collision(i)
+			print(collision)
+			if moveBlock:
+				Global.hooked = false	# Got something!
+				Global.flying = true	# Not flying anymore
+			else:
+				Global.hooked = true	# Got something!
+				Global.flying = false	# Not flying anymore
 	tip = $Tip.global_position	# set `tip` as starting position for next frame
+
+
+func _on_Area2D_body_entered(body):
+	if body is MovableBlock:
+		moveBlock = true
+		direction = -direction
+		body.set_velocity(direction*SPEED)
+		body.isMoving = true
+		Global.flying = true
+		Global.hooked = false
