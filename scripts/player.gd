@@ -10,8 +10,8 @@ signal groundedUpdate(isGrounded)
 
 var velocity = Vector2()
 var chainVelocity := Vector2(0,0)
-var walkSpeed = 45
-var runSpeed = 90
+var walkSpeed = 125
+var runSpeed = 175
 var playerSpeed = 0
 var isGrounded = false
 var wasGrounded = false
@@ -23,9 +23,9 @@ var moveDirection = 1
 var recharging = false
 var facingDirection = 1
 
-const JUMP_POWER = [-250,-350] #human, mech
+const JUMP_POWER = [-250,-300] #human, mech
 const FLOOR = Vector2(0,-1)
-const CHAIN_PULL = 100
+const CHAIN_PULL = 400
 const MECH = preload("res://prefab/Mech.tscn")
 const isPlayer = true
 
@@ -68,9 +68,6 @@ func _apply_movement():
 	
 	wasGrounded = isGrounded
 	isGrounded = is_on_floor()
-	
-	if (wasGrounded == null || isGrounded != wasGrounded):
-		emit_signal("groundedUpdate", isGrounded)
 	
 	if wasGrounded == null || wasGrounded != isGrounded:
 		Global.emit_signal("groundedUpdate", isGrounded)
@@ -127,4 +124,12 @@ func _on_mechRechargeTimer_timeout():
 	Global.UpdateHealth(Global.curLife[1] + 1, 1)
 func death(_area = null):
 	Global.emit_signal("deathScreen")
+	
+func releaseGrapple():
+	print("release grapple")
+	grapple.release()
+	Global.releaseGrapple = false
+	Global.emit_signal("startGrappleCooldown")
+	Global.hasGrapple = false
+	currentRopeLength = 0
 
