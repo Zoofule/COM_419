@@ -8,9 +8,10 @@ var tip := Vector2(0,0)
 var collision = null
 var parent = get_parent()
 var moveBlock = false
+var block
 
 
-const SPEED = 150	# The speed with which the chain moves
+const SPEED = 600	# The speed with which the chain moves
 
 
 # shoot() shoots the chain in a given direction
@@ -22,8 +23,9 @@ func shoot(dir: Vector2) -> void:
 # release() the chain
 func release() -> void:
 	moveBlock = false
-	Global.holdingObject = null
-	moveBlock = false
+	Global.holdingObject = null	
+	if(block is MovableBlock):
+		block.velocity = Vector2(0, Global.gravity) 
 	Global.flying = false	# Not flying anymore	
 	Global.hooked = false	# Not attached anymore
 
@@ -50,8 +52,8 @@ func _physics_process(_delta: float) -> void:
 			collision = $Tip.get_slide_collision(i)
 			print(collision)
 			if moveBlock:
-				Global.hooked = false	# Got something!
-				Global.flying = true	# Not flying anymore
+				Global.hooked = false	
+				Global.flying = true	
 			else:
 				Global.hooked = true	# Got something!
 				Global.flying = false	# Not flying anymore
@@ -60,9 +62,10 @@ func _physics_process(_delta: float) -> void:
 
 func _on_Area2D_body_entered(body):
 	if body is MovableBlock:
+		block = body
 		moveBlock = true
 		direction = -direction
 		body.set_velocity(direction*SPEED)
-		body.isMoving = true
 		Global.flying = true
 		Global.hooked = false
+		Global.releaseGrapple = true

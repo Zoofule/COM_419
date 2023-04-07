@@ -5,10 +5,15 @@ func _input(event):
 		var pauseState = not get_tree().paused
 		get_tree().paused = pauseState
 		visible = pauseState
+		if(pauseState):
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		else:
+			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 
 func _on_resume_pressed():
 	get_tree().paused = false
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	visible = false
 
 

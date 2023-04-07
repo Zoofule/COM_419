@@ -106,9 +106,6 @@ text = "Level 1"
 
 [node name="Main2D" type="Node2D" parent="."]
 
-[node name="Camera2D" type="Camera2D" parent="Main2D"]
-position = Vector2( 160, 90 )
-
 [node name="GrappleCooldownTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true

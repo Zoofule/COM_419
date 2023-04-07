@@ -3,7 +3,7 @@ extends StaticBody2D
 signal startTimer()
 
 export var rotateSpeed := 90.0
-onready var ray = $pointer/RayCast2D
+onready var ray = $pointer/LazerBeam
 onready var pointer = $pointer
 onready var shotPosition = $pointer/Position2D
 onready var shotTimer = $shotTimer

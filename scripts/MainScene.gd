@@ -10,7 +10,7 @@ onready var menu : Control = $Menu
 onready var main2D : Node2D = $Main2D
 onready var camera : Camera2D = $Main2D/Camera2D
 onready var grappleCooldownTimer = $GrappleCooldownTimer
-onready var grappleCooldownTexture = $HUD/HUD/CanvasLayer/GrappleCooldownPB
+onready var grappleCooldownTexture = $HUD/HUD/CanvasLayer/mouse/Control/cursor
 onready var hoverTimer = $MechHoverTimer
 onready var hoverCooldownTimer = $MechHoverCooldownTimer
 onready var hoverTimerTexture = $HUD/HUD/CanvasLayer/MechHoverTimer
@@ -99,6 +99,7 @@ func loadScene(scene = Global.currentScene):
 	menu.hide()
 	if get_tree().paused:
 		$Menu/CanvasLayer/Pause._on_resume_pressed()
+		
 
 func _on_save_pressed():
 	Global.saveData(Global.SAVE_PATH)
