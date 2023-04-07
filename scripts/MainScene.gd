@@ -66,6 +66,7 @@ func loadLevel(levelName : String):
 
 func _on_Button_pressed():
 	loadScene("StageOne")
+
 	
 func returnToMainMenu():
 	unloadLevel()
@@ -126,3 +127,9 @@ func _on_MechHoverTimer_timeout():
 func _on_MechHoverCooldownTimer_timeout():
 	hoverTimerTexture.hide()
 	Global.canHover = true
+
+
+
+
+
+

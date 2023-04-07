@@ -1,0 +1,9 @@
+[gd_scene format=2]
+
+[node name="ReturnToMenu" type="RichTextLabel"]
+anchor_bottom = 1.257
+margin_left = 416.0
+margin_top = -106.0
+margin_right = 612.0
+margin_bottom = -45.0
+text = "Press Escape to return and return to the Main Menu to select other testing scenarios."

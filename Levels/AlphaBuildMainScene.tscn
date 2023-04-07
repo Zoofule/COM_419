@@ -1,0 +1,285 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://prefab/HUD.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scripts/AlphaBuildMainScene.gd" type="Script" id=2]
+[ext_resource path="res://Levels/Pause.gd" type="Script" id=3]
+
+[node name="Node" type="Node"]
+
+[node name="MainScene" type="Control" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 2 )
+
+[node name="HUD" type="Control" parent="MainScene"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="HUD" parent="MainScene/HUD" instance=ExtResource( 1 )]
+
+[node name="Menu" type="Control" parent="MainScene"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="MainScene/Menu"]
+layer = 100
+
+[node name="Pause" type="Control" parent="MainScene/Menu/CanvasLayer"]
+pause_mode = 2
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 3 )
+
+[node name="ColorRect" type="ColorRect" parent="MainScene/Menu/CanvasLayer/Pause"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0, 0, 0, 0.392157 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainScene/Menu/CanvasLayer/Pause"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -41.5
+margin_top = -58.0
+margin_right = 41.5
+margin_bottom = 58.0
+rect_scale = Vector2( 0.5, 0.5 )
+
+[node name="resume" type="Button" parent="MainScene/Menu/CanvasLayer/Pause/VBoxContainer"]
+margin_right = 83.0
+margin_bottom = 20.0
+text = "Resume"
+
+[node name="options" type="Button" parent="MainScene/Menu/CanvasLayer/Pause/VBoxContainer"]
+visible = false
+margin_top = 24.0
+margin_right = 83.0
+margin_bottom = 44.0
+text = "Options"
+
+[node name="save" type="Button" parent="MainScene/Menu/CanvasLayer/Pause/VBoxContainer"]
+margin_top = 24.0
+margin_right = 83.0
+margin_bottom = 44.0
+text = "Save"
+
+[node name="load" type="Button" parent="MainScene/Menu/CanvasLayer/Pause/VBoxContainer"]
+margin_top = 48.0
+margin_right = 83.0
+margin_bottom = 68.0
+text = "Load"
+
+[node name="returnToMainMenu" type="Button" parent="MainScene/Menu/CanvasLayer/Pause/VBoxContainer"]
+margin_top = 72.0
+margin_right = 83.0
+margin_bottom = 92.0
+text = "Main Menu"
+
+[node name="quit" type="Button" parent="MainScene/Menu/CanvasLayer/Pause/VBoxContainer"]
+margin_top = 96.0
+margin_right = 83.0
+margin_bottom = 116.0
+text = "Quit"
+
+[node name="Label" type="Label" parent="MainScene/Menu/CanvasLayer/Pause"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -23.0
+margin_top = 12.0
+margin_right = 23.0
+margin_bottom = 14.0
+rect_scale = Vector2( 0.5, 0.5 )
+text = "Paused"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MainScene/Menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -122.0
+margin_top = -50.0
+margin_right = -19.0
+margin_bottom = 48.0
+rect_scale = Vector2( 0.5, 0.5 )
+
+[node name="Button" type="Button" parent="MainScene/Menu/VBoxContainer"]
+margin_right = 103.0
+margin_bottom = 20.0
+text = "Grapple Hook"
+
+[node name="Button2" type="Button" parent="MainScene/Menu/VBoxContainer"]
+margin_top = 24.0
+margin_right = 103.0
+margin_bottom = 44.0
+text = "Box"
+
+[node name="Button3" type="Button" parent="MainScene/Menu/VBoxContainer"]
+margin_top = 48.0
+margin_right = 103.0
+margin_bottom = 68.0
+text = "Turret "
+
+[node name="Button4" type="Button" parent="MainScene/Menu/VBoxContainer"]
+margin_top = 72.0
+margin_right = 103.0
+margin_bottom = 92.0
+text = "Plant "
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MainScene/Menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -122.0
+margin_top = 9.0
+margin_right = -16.0
+margin_bottom = 87.0
+rect_scale = Vector2( 0.5, 0.5 )
+
+[node name="Button5" type="Button" parent="MainScene/Menu/VBoxContainer2"]
+margin_right = 106.0
+margin_bottom = 20.0
+size_flags_vertical = 0
+text = "Hover"
+
+[node name="Button6" type="Button" parent="MainScene/Menu/VBoxContainer2"]
+margin_top = 24.0
+margin_right = 106.0
+margin_bottom = 44.0
+text = "Turret v2"
+
+[node name="Button7" type="Button" parent="MainScene/Menu/VBoxContainer2"]
+margin_top = 48.0
+margin_right = 106.0
+margin_bottom = 68.0
+text = "Plant v2 "
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="MainScene/Menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -121.0
+margin_top = 55.0
+margin_right = -17.0
+margin_bottom = 77.0
+rect_scale = Vector2( 0.5, 0.5 )
+
+[node name="Button8" type="Button" parent="MainScene/Menu/VBoxContainer3"]
+margin_right = 104.0
+margin_bottom = 20.0
+text = "Pickups "
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="MainScene/Menu"]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = 33.0
+margin_top = 33.0
+margin_right = 137.0
+margin_bottom = 55.0
+rect_scale = Vector2( 0.5, 0.5 )
+
+[node name="Button9" type="Button" parent="MainScene/Menu/VBoxContainer4"]
+margin_right = 104.0
+margin_bottom = 20.0
+text = "Controls"
+
+[node name="Main2D" type="Node2D" parent="MainScene"]
+
+[node name="Camera2D" type="Camera2D" parent="MainScene/Main2D"]
+position = Vector2( 160, 90 )
+
+[node name="GrappleCooldownTimer" type="Timer" parent="MainScene"]
+wait_time = 2.0
+one_shot = true
+
+[node name="MechHoverTimer" type="Timer" parent="MainScene"]
+wait_time = 3.0
+one_shot = true
+
+[node name="MechHoverCooldownTimer" type="Timer" parent="MainScene"]
+one_shot = true
+
+[node name="Mech Tests" type="RichTextLabel" parent="."]
+margin_left = 45.0
+margin_top = 89.0
+margin_right = 133.0
+margin_bottom = 104.0
+rect_scale = Vector2( 0.5, 0.5 )
+text = "Mech Tests"
+
+[node name="Welcome" type="RichTextLabel" parent="."]
+margin_left = 180.0
+margin_top = 25.0
+margin_right = 351.0
+margin_bottom = 64.0
+rect_rotation = 0.110314
+rect_scale = Vector2( 0.5, 0.5 )
+text = "Welcome to the Alpha of "
+
+[node name="Description" type="RichTextLabel" parent="."]
+anchor_right = 0.026
+margin_left = 163.0
+margin_top = 55.0
+margin_right = 383.0
+margin_bottom = 166.0
+rect_rotation = 0.110314
+rect_scale = Vector2( 0.5, 0.5 )
+text = "Unfortunately, we had to go back to the drawing board further in the development cycle than we would have liked. So we are missing some features that we plan to have in the final itteration of the game."
+
+[node name="Title" type="RichTextLabel" parent="."]
+margin_left = 180.0
+margin_top = 34.0
+margin_right = 351.0
+margin_bottom = 73.0
+rect_rotation = 0.110314
+text = "\"Lost Lands\""
+
+[node name="subtitle" type="RichTextLabel" parent="."]
+margin_left = 206.0
+margin_top = 49.0
+margin_right = 377.0
+margin_bottom = 84.0
+rect_rotation = 0.110314
+rect_scale = Vector2( 0.25, 0.25 )
+text = " (working title)"
+
+[node name="Human Test" type="RichTextLabel" parent="."]
+margin_left = 41.0
+margin_top = 31.0
+margin_right = 131.0
+margin_bottom = 46.0
+rect_scale = Vector2( 0.5, 0.5 )
+text = "Human Tests"
+
+[node name="Combo Test" type="RichTextLabel" parent="."]
+margin_left = 42.0
+margin_top = 137.0
+margin_right = 142.0
+margin_bottom = 152.0
+rect_scale = Vector2( 0.5, 0.5 )
+text = "Combo Tests"
+
+[connection signal="startHoverCooldown" from="MainScene" to="MainScene/MechHoverCooldownTimer" method="start"]
+[connection signal="startHoverTimer" from="MainScene" to="MainScene/MechHoverTimer" method="start"]
+[connection signal="pressed" from="MainScene/Menu/CanvasLayer/Pause/VBoxContainer/resume" to="MainScene/Menu/CanvasLayer/Pause" method="_on_resume_pressed"]
+[connection signal="pressed" from="MainScene/Menu/CanvasLayer/Pause/VBoxContainer/save" to="MainScene" method="_on_save_pressed"]
+[connection signal="pressed" from="MainScene/Menu/CanvasLayer/Pause/VBoxContainer/load" to="MainScene" method="_on_load_pressed"]
+[connection signal="pressed" from="MainScene/Menu/CanvasLayer/Pause/VBoxContainer/returnToMainMenu" to="MainScene" method="returnToMainMenu"]
+[connection signal="pressed" from="MainScene/Menu/CanvasLayer/Pause/VBoxContainer/quit" to="MainScene/Menu/CanvasLayer/Pause" method="_on_quit_pressed"]
+[connection signal="pressed" from="MainScene/Menu/VBoxContainer/Button" to="MainScene" method="_on_Button_pressed"]
+[connection signal="pressed" from="MainScene/Menu/VBoxContainer/Button2" to="MainScene" method="_on_Button2_pressed"]
+[connection signal="pressed" from="MainScene/Menu/VBoxContainer/Button3" to="MainScene" method="_on_Button3_pressed"]
+[connection signal="pressed" from="MainScene/Menu/VBoxContainer/Button4" to="MainScene" method="_on_Button4_pressed"]
+[connection signal="pressed" from="MainScene/Menu/VBoxContainer2/Button5" to="MainScene" method="_on_Button5_pressed"]
+[connection signal="pressed" from="MainScene/Menu/VBoxContainer2/Button6" to="MainScene" method="_on_Button6_pressed"]
+[connection signal="pressed" from="MainScene/Menu/VBoxContainer2/Button7" to="MainScene" method="_on_Button7_pressed"]
+[connection signal="pressed" from="MainScene/Menu/VBoxContainer3/Button8" to="MainScene" method="_on_Button8_pressed"]
+[connection signal="pressed" from="MainScene/Menu/VBoxContainer4/Button9" to="MainScene" method="_on_Button9_pressed"]
+[connection signal="timeout" from="MainScene/GrappleCooldownTimer" to="MainScene" method="_on_GrappleCooldownTimer_timeout"]
+[connection signal="timeout" from="MainScene/MechHoverTimer" to="MainScene" method="_on_MechHoverTimer_timeout"]
+[connection signal="timeout" from="MainScene/MechHoverCooldownTimer" to="MainScene" method="_on_MechHoverCooldownTimer_timeout"]

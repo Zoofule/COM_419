@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://textures/Mech and pilot v3.png" type="Texture" id=1]
 [ext_resource path="res://scripts/DamageArea.gd" type="Script" id=2]
@@ -7,6 +7,8 @@
 [ext_resource path="res://prefab/Grapple.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scripts/PlayerSM.gd" type="Script" id=6]
 [ext_resource path="res://scripts/Hitbox.gd" type="Script" id=7]
+[ext_resource path="res://Asset/visual assets/spriteSheets/player/human/Pilot_walk.png" type="Texture" id=8]
+[ext_resource path="res://Asset/visual assets/spriteSheets/player/human/Pilot_idle.png" type="Texture" id=9]
 
 [sub_resource type="RectangleShape2D" id=7]
 extents = Vector2( 17, 28.5 )
@@ -17,11 +19,70 @@ extents = Vector2( 8, 18.5 )
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 19, 28 )
 
+[sub_resource type="AtlasTexture" id=13]
+atlas = ExtResource( 9 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=14]
+atlas = ExtResource( 9 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=15]
+atlas = ExtResource( 9 )
+region = Rect2( 128, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=16]
+atlas = ExtResource( 9 )
+region = Rect2( 0, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=17]
+atlas = ExtResource( 9 )
+region = Rect2( 64, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=18]
+atlas = ExtResource( 9 )
+region = Rect2( 128, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=19]
+atlas = ExtResource( 9 )
+region = Rect2( 0, 128, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=9]
+atlas = ExtResource( 8 )
+region = Rect2( 0, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=10]
+atlas = ExtResource( 8 )
+region = Rect2( 64, 0, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=11]
+atlas = ExtResource( 8 )
+region = Rect2( 0, 64, 64, 64 )
+
+[sub_resource type="AtlasTexture" id=12]
+atlas = ExtResource( 8 )
+region = Rect2( 64, 64, 64, 64 )
+
+[sub_resource type="SpriteFrames" id=20]
+animations = [ {
+"frames": [ SubResource( 13 ), SubResource( 14 ), SubResource( 15 ), SubResource( 16 ), SubResource( 17 ), SubResource( 18 ), SubResource( 19 ) ],
+"loop": true,
+"name": "idle",
+"speed": 8.0
+}, {
+"frames": [ SubResource( 9 ), SubResource( 10 ), SubResource( 11 ), SubResource( 12 ) ],
+"loop": true,
+"name": "walk",
+"speed": 8.0
+} ]
+
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 25, 21.5 )
 
 [node name="player" type="KinematicBody2D" groups=["Player"]]
+
 position = Vector2( 52, 2 )
+
 collision_layer = 2
 collision_mask = 137
 script = ExtResource( 4 )
@@ -68,7 +129,13 @@ __meta__ = {
 "_edit_group_": true
 }
 
+[node name="AnimatedSprite" type="AnimatedSprite" parent="Human"]
+position = Vector2( 0, 1 )
+frames = SubResource( 20 )
+animation = "idle"
+
 [node name="Sprite" type="Sprite" parent="Human"]
+visible = false
 texture = ExtResource( 1 )
 region_enabled = true
 region_rect = Rect2( 40, 26, 29, 42 )

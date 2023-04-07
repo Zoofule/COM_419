@@ -3,6 +3,7 @@ extends KinematicBody2D
 
 onready var hitbox = $PlayerHitbox
 onready var grapple = $Human/Grapple
+onready var animation = $Human/AnimatedSprite
 onready var viewportSize = null
 signal stopRechargeTimer()
 signal startRechargeTimer()
@@ -83,17 +84,23 @@ func _apply_gravity(delta):
 		velocity.y += Global.gravity
 func _update_move_direction():
 	moveDirection = -int(Input.is_action_pressed("ui_left")) + int(Input.is_action_pressed("ui_right"))
-	if moveDirection != 0: facingDirection = moveDirection
+	if moveDirection != 0: 
+		facingDirection = moveDirection
+		
 	if moveDirection == 1:
-		$Human/Sprite.flip_h = false
+		$Human/AnimatedSprite.flip_h = false
+		animation.play("walk")
 		$Mech/Sprite.flip_h = false
 		if sign($Mech/RangedAttackPos.position.x) != 1:
 			$Mech/RangedAttackPos.position.x *= -1
 	elif moveDirection == -1:
-		$Human/Sprite.flip_h = true
+		$Human/AnimatedSprite.flip_h = true
+		animation.play("walk")
 		$Mech/Sprite.flip_h = true
 		if sign($Mech/RangedAttackPos.position.x) == 1:
 			$Mech/RangedAttackPos.position.x *= -1
+	else:
+		animation.play("idle")
  
 func _toggle_mech():
 	if Global.mechState == 0:
