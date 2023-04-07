@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://prefab/player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://prefab/PlantEnemy.tscn" type="PackedScene" id=2]
@@ -9,7 +9,12 @@
 [ext_resource path="res://prefab/ChargePickup.tscn" type="PackedScene" id=7]
 [ext_resource path="res://prefab/Turret.tscn" type="PackedScene" id=8]
 [ext_resource path="res://prefab/SmallMovableBlock.tscn" type="PackedScene" id=9]
-[ext_resource path="res://prefab/deathPit.tscn" type="PackedScene" id=10]
+
+[ext_resource path="res://LazerBeam.tscn" type="PackedScene" id=10]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 1100, 70 )
+
 
 [node name="StageOne" type="Node2D"]
 
@@ -51,3 +56,11 @@ position = Vector2( 944, 16 )
 
 [node name="SmallMovableBlock" parent="." instance=ExtResource( 9 )]
 position = Vector2( 442, 22 )
+
+
+[node name="LazerBeam" parent="." instance=ExtResource( 10 )]
+position = Vector2( 469, -44 )
+rotation = 1.5708
+
+[connection signal="area_entered" from="deathPit" to="player" method="death"]
+

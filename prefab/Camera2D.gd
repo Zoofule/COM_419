@@ -3,10 +3,25 @@ class_name Camera2d
 
 
 var facing = 0
-var targetNode
+export (NodePath) var targetPath = null
+var target
 var dragging = false
 var mouseStartPos
 var screenStartPos
+var lerpSpeed = 0.01
+onready var top = $"../posTop"
+onready var bottom = $"../posBottom"
+onready var left = $"../posLeft"
+onready var right = $"../posRight"
+
+func _ready():
+	target = get_node(targetPath)
+
+
+func _process(delta):
+	_set_camera_limits()
+	if(!dragging && target != null):
+		self.global_position = lerp(self.global_position, target.global_position, lerpSpeed)
 
 
 func _input(event):
@@ -21,3 +36,11 @@ func _input(event):
 		position = zoom * (mouseStartPos - event.position) + screenStartPos
 	
 		
+		
+func _set_camera_limits():
+	var x = get_viewport_rect().size.x*zoom.x
+	var y = get_viewport_rect().size.y*zoom.y
+	limit_bottom = top.global_position.y + y - offset_v
+	limit_top = bottom.global_position.y - y + offset_v
+	limit_left = right.global_position.x - x + offset_h
+	limit_right = left.global_position.x + x - offset_h

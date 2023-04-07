@@ -14,7 +14,7 @@
 extents = Vector2( 17, 28.5 )
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 9, 18.5 )
+extents = Vector2( 8, 18.5 )
 
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 19, 28 )
@@ -80,7 +80,9 @@ animations = [ {
 extents = Vector2( 25, 21.5 )
 
 [node name="player" type="KinematicBody2D" groups=["Player"]]
-position = Vector2( 49, 0 )
+
+position = Vector2( 52, 2 )
+
 collision_layer = 2
 collision_mask = 137
 script = ExtResource( 4 )
@@ -153,18 +155,6 @@ position = Vector2( 0, -1.5 )
 shape = SubResource( 6 )
 disabled = true
 
-[node name="humanTop" type="Position2D" parent="Human"]
-position = Vector2( 0, -16 )
-
-[node name="humanBottom" type="Position2D" parent="Human"]
-position = Vector2( 0, 20 )
-
-[node name="humanLeft" type="Position2D" parent="Human"]
-position = Vector2( -11, 0 )
-
-[node name="humanRight" type="Position2D" parent="Human"]
-position = Vector2( 7, 0 )
-
 [node name="SM" type="Node2D" parent="."]
 position = Vector2( 0, 67 )
 script = ExtResource( 6 )
@@ -190,12 +180,32 @@ wait_time = 2.0
 [node name="Camera2D" type="Camera2D" parent="."]
 modulate = Color( 0.941176, 0.941176, 0.941176, 1 )
 current = true
-smoothing_speed = 8.0
+zoom = Vector2( 1.5, 1.5 )
+limit_smoothed = true
+smoothing_speed = 7.0
+offset_v = -1.0
+drag_margin_left = 0.15
+drag_margin_top = 0.3
+drag_margin_right = 0.15
+drag_margin_bottom = 0.3
 editor_draw_limits = true
 editor_draw_drag_margin = true
 script = ExtResource( 3 )
+targetPath = NodePath("../Human")
 
 [node name="shiftTween" type="Tween" parent="Camera2D"]
+
+[node name="posTop" type="Position2D" parent="."]
+position = Vector2( 1, -38 )
+
+[node name="posBottom" type="Position2D" parent="."]
+position = Vector2( 1, 23 )
+
+[node name="posLeft" type="Position2D" parent="."]
+position = Vector2( -19, 0 )
+
+[node name="posRight" type="Position2D" parent="."]
+position = Vector2( 23, 0 )
 
 [connection signal="groundedUpdate" from="." to="Camera2D" method="_on_player_groundedUpdate"]
 [connection signal="startRechargeTimer" from="." to="mechRechargeTimer" method="start"]

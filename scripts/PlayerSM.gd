@@ -70,7 +70,7 @@ func _input(event) -> void:
 		if event.is_action("leftMouse"):
 			if Global.hasGrapple == true && Global.mechState == 0:
 				var target = parent.get_global_mouse_position()
-				if event.pressed:
+				if event.pressed && Global.releaseGrapple != true:
 					# We clicked the mouse -> shoot()
 					#parent.hookPosition = event.position - parent.viewportSize * 0.5
 					parent.hookPosition = parent.global_position.direction_to(target)
@@ -80,10 +80,8 @@ func _input(event) -> void:
 				else:
 					# We released the mouse -> release()
 					if Global.hooked || Global.flying:
-						parent.grapple.release()
-						Global.emit_signal("startGrappleCooldown")
-						Global.hasGrapple = false
-						parent.currentRopeLength = 0
+						parent.releaseGrapple()
+						
 	#toggle mech mode
 	if event.is_action_pressed("toggle") and Global.hasMech == true:
 		parent._toggle_mech()
