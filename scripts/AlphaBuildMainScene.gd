@@ -155,6 +155,13 @@ func returnToMainMenu():
 	healthBar.hide()
 	chargeBar.hide()
 	menu.show()
+	$"../Mech Tests".show()
+	$"../Welcome".show()
+	$"../Description".show()
+	$"../Title".show()
+	$"../subtitle".show()
+	$"../Human Test".show()
+	$"../Combo Test".show()
 	$Menu/CanvasLayer/Pause._on_resume_pressed()
 	
 func deathScreen():
