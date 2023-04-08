@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/CharacterJump.mp3-93c4234f3bca234dbd589558bbfe38c2.mp3str"
+
+[deps]
+
+source_file="res://Asset/audio Assets/soundFX/player/human/CharacterJump.mp3"
+dest_files=[ "res://.import/CharacterJump.mp3-93c4234f3bca234dbd589558bbfe38c2.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

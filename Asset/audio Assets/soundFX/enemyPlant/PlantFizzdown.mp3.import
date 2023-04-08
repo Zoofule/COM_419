@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/PlantFizzdown.mp3-ae05c2d6962b4d071ebb70e4eed913d0.mp3str"
+
+[deps]
+
+source_file="res://Asset/audio Assets/soundFX/enemyPlant/PlantFizzdown.mp3"
+dest_files=[ "res://.import/PlantFizzdown.mp3-ae05c2d6962b4d071ebb70e4eed913d0.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

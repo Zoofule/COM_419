@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/CharacterLand.mp3-b22f1c4a0377a7e3daf3fc6087f1189c.mp3str"
+
+[deps]
+
+source_file="res://Asset/audio Assets/soundFX/player/human/CharacterLand.mp3"
+dest_files=[ "res://.import/CharacterLand.mp3-b22f1c4a0377a7e3daf3fc6087f1189c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/mechDeath.mp3-b379f556a1b672b262923d40e944543b.mp3str"
+
+[deps]
+
+source_file="res://Asset/audio Assets/soundFX/player/mech/mechDeath.mp3"
+dest_files=[ "res://.import/mechDeath.mp3-b379f556a1b672b262923d40e944543b.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

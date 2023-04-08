@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/TurretDeath.mp3-632fa3af2e5cb3c221b4800f3d2da22d.mp3str"
+
+[deps]
+
+source_file="res://Asset/audio Assets/soundFX/enemyTurret/TurretDeath.mp3"
+dest_files=[ "res://.import/TurretDeath.mp3-632fa3af2e5cb3c221b4800f3d2da22d.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

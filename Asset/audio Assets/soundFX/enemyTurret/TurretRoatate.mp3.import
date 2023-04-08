@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/TurretRoatate.mp3-644f6e15cca1b85b22e790bb1bb224e6.mp3str"
+
+[deps]
+
+source_file="res://Asset/audio Assets/soundFX/enemyTurret/TurretRoatate.mp3"
+dest_files=[ "res://.import/TurretRoatate.mp3-644f6e15cca1b85b22e790bb1bb224e6.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

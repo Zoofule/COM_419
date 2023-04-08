@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/GrappleRope.mp3-99140a75b9336d5b2c72a9af97ef02c5.mp3str"
+
+[deps]
+
+source_file="res://Asset/audio Assets/soundFX/player/human/Grappling Hook/GrappleRope.mp3"
+dest_files=[ "res://.import/GrappleRope.mp3-99140a75b9336d5b2c72a9af97ef02c5.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

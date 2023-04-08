@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/MenuSelect.mp3-e96e651fdce1b209bd15afdcb7afdb9f.mp3str"
+
+[deps]
+
+source_file="res://Asset/audio Assets/soundFX/menu/MenuSelect.mp3"
+dest_files=[ "res://.import/MenuSelect.mp3-e96e651fdce1b209bd15afdcb7afdb9f.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/CharacterSlash.mp3-2a3dafcc9f95f2c2e2bfbf353399e3fc.mp3str"
+
+[deps]
+
+source_file="res://Asset/audio Assets/soundFX/player/human/CharacterSlash.mp3"
+dest_files=[ "res://.import/CharacterSlash.mp3-2a3dafcc9f95f2c2e2bfbf353399e3fc.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

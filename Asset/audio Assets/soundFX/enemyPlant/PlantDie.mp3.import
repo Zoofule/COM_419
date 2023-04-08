@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/PlantDie.mp3-7bce5920f2547d14c476b450cb430938.mp3str"
+
+[deps]
+
+source_file="res://Asset/audio Assets/soundFX/enemyPlant/PlantDie.mp3"
+dest_files=[ "res://.import/PlantDie.mp3-7bce5920f2547d14c476b450cb430938.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

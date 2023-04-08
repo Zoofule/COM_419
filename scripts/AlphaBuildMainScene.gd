@@ -30,7 +30,7 @@ func _ready():
 	Global.connect("startHoverTimer", self, "_start_hover_timer")
 	chargeBar.hide()
 	healthBar.hide()
-	grappleCooldownTexture.hide()
+################################################################################	grappleCooldownTexture.hide()
 	hoverTimerTexture.hide()
 	
 func _process(delta):
@@ -38,7 +38,7 @@ func _process(delta):
 		var percentageOfTime = (
 			(1 - grappleCooldownTimer.get_time_left() / grappleCooldownTimer.get_wait_time()) * 100
 		)
-		grappleCooldownTexture.value = percentageOfTime
+		#######################################################################grappleCooldownTexture.value = percentageOfTime
 	if hoverTimer.get_time_left() > 0:
 		var percentageOfTime = (
 			(1 - hoverTimer.get_time_left() / hoverTimer.get_wait_time()) * 100
@@ -170,8 +170,8 @@ func deathScreen():
 	healthBar.hide()
 	chargeBar.hide()
 	
-func show_grapple_cooldown():
-	grappleCooldownTexture.show()
+###################################func show_grapple_cooldown():
+	###############################grappleCooldownTexture.show()
 
 func _on_GrappleCooldownTimer_timeout():
 	grappleCooldownTexture.hide()

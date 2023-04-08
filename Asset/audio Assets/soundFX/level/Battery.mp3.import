@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Battery.mp3-287048e336d0a971b3a9b82182c02aa8.mp3str"
+
+[deps]
+
+source_file="res://Asset/audio Assets/soundFX/level/Battery.mp3"
+dest_files=[ "res://.import/Battery.mp3-287048e336d0a971b3a9b82182c02aa8.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

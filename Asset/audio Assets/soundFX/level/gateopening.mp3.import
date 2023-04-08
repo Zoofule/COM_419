@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/gateopening.mp3-c12e5c8227296fcd29a8f0cf728b4eb6.mp3str"
+
+[deps]
+
+source_file="res://Asset/audio Assets/soundFX/level/gateopening.mp3"
+dest_files=[ "res://.import/gateopening.mp3-c12e5c8227296fcd29a8f0cf728b4eb6.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
